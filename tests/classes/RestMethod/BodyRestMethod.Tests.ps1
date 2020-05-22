@@ -98,7 +98,7 @@ Describe "BodyRestMethod (Class)" {
         $uri = "https://my-uri.com"
         $retries = 3
         $delay = 5
-        $jc = New-Object JiraContext @("1","2",$uri,$retries,$delay)
+        $jc = New-Object AtlassianContext @("1","2",$uri,$retries,$delay)
         Mock "Invoke-RestMethod" $MockInvokeRestMethod -ModuleName RestMethod
         $simpleRm = New-Object BodyRestMethod @($simplePath,$get,$simpleBody)
         $result = $simpleRm.Invoke($jc)
@@ -132,7 +132,7 @@ Describe "BodyRestMethod (Class)" {
     }
     Context "Invoke Method (with query)" {
         $uri = "https://my-uri.com"
-        $jc = New-Object JiraContext @("1","2",$uri)
+        $jc = New-Object AtlassianContext @("1","2",$uri)
         $qs = New-Object RestMethodQueryParams @{
             prop1 = "val1"
         }

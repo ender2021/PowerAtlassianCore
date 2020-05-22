@@ -6,7 +6,7 @@ Describe "PowerAtlassianGlobal (Class)" {
         
     }
     Context "Session Methods" {
-        $jiraContext = New-Object JiraContext @("1","2","3")
+        $jiraContext = New-Object AtlassianContext @("1","2","3")
         $pjg = New-Object PowerAtlassianGlobal
 
         It "OpenSession sets the passed AtlassianContext object to the Context property" {

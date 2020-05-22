@@ -70,8 +70,8 @@ Describe "RestMethod (Class)" {
         }
     }
     Context "FillContext Static Method" {
-        $jc = New-Object JiraContext @("1","2","3")
-        $jc2 = New-Object JiraContext @("2","3","4")
+        $jc = New-Object AtlassianContext @("1","2","3")
+        $jc2 = New-Object AtlassianContext @("2","3","4")
         $Global:PowerAtlassian = New-Object PowerAtlassianGlobal
         $Global:PowerAtlassian.Context = $jc2
 
@@ -90,7 +90,7 @@ Describe "RestMethod (Class)" {
     }
     Context "Uri Method" {
         $uri = "https://my-uri.com"
-        $jc = New-Object JiraContext @("1","2",$uri)
+        $jc = New-Object AtlassianContext @("1","2",$uri)
         $qs = New-Object RestMethodQueryParams @{
             prop1 = "val1"
         }
@@ -108,7 +108,7 @@ Describe "RestMethod (Class)" {
     }
     Context "HeadersToSend Method" {
         $uri = "https://my-uri.com"
-        $jc = New-Object JiraContext @("1","2",$uri)
+        $jc = New-Object AtlassianContext @("1","2",$uri)
 
         It "adds the Auth header from the context object to the RestMethod headers" {
             $newHeader = @{
@@ -125,7 +125,7 @@ Describe "RestMethod (Class)" {
         $uri = "https://my-uri.com"
         $retries = 3
         $delay = 5
-        $jc = New-Object JiraContext @("1","2",$uri,$retries,$delay)
+        $jc = New-Object AtlassianContext @("1","2",$uri,$retries,$delay)
         Mock "Invoke-RestMethod" $MockInvokeRestMethod -ModuleName RestMethod
         $rm = New-Object RestMethod @($simplePath,$get)
         $result = $rm.Invoke($jc)
@@ -151,7 +151,7 @@ Describe "RestMethod (Class)" {
     }
     Context "Invoke Method (with query)" {
         $uri = "https://my-uri.com"
-        $jc = New-Object JiraContext @("1","2",$uri)
+        $jc = New-Object AtlassianContext @("1","2",$uri)
         $qs = New-Object RestMethodQueryParams @{
             prop1 = "val1"
         }
@@ -167,7 +167,7 @@ Describe "RestMethod (Class)" {
         $uri = "https://my-uri.com"
         $retries = 3
         $delay = 1
-        $jc = New-Object JiraContext @("1","2",$uri, $retries, $delay)
+        $jc = New-Object AtlassianContext @("1","2",$uri, $retries, $delay)
         Mock "Start-Sleep" {} -ModuleName RestMethod
 
         It "retries the correct number of times when an exception is thrown" {
