@@ -18,3 +18,7 @@ build: false
 #Kick off the CI/CD pipeline
 test_script:
   - pwsh: . .\build.ps1
+
+#check if the build succeeded
+after_test:
+- pwsh: if($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode )  }
