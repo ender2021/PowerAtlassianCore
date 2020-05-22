@@ -12,7 +12,7 @@ Describe "BodyRestMethod (Class)" {
     $simplePath = "path"
     $get = "GET"
     $defaultContentType = "application/json"
-    $jsonBody = New-Object RestMethodJsonBody
+    $jsonBody = New-Object RestMethodJsonBody @{
         prop1 = "val1"
         prop2 = "val2"
     }
