@@ -53,7 +53,5 @@ Resolve-Module Psake, PSDeploy, Pester, BuildHelpers
 Set-BuildEnvironment
 
 Invoke-psake .\psake.ps1
-$exitCode = [int]( -not $psake.build_success )
-"Setting Exit Code [$exitCode]"
-$host.SetShouldExit($exitCode)
-#exit ( [int]( -not $psake.build_success ) )
+
+$host.SetShouldExit([int]( -not $psake.build_success ))
