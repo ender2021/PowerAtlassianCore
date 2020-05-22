@@ -38,10 +38,6 @@ Task Test -Depends Init  {
     $lines
     "`n`tSTATUS: Testing with PowerShell $PSVersion"
 
-    Import-Module $ProjectRoot\PowerJira\PowerJira.psm1
-    $privateFiles = Get-ChildItem -Path $ProjectRoot\PowerJira\private -Recurse -Include *.ps1 -ErrorAction SilentlyContinue
-    if(@($privateFiles).Count -gt 0) { $privateFiles.FullName | ForEach-Object { . $_ } }
-
     # Gather test results. Store them in a variable and file
     $TestResults = Invoke-Pester -Path $ProjectRoot\Tests -PassThru -OutputFormat NUnitXml -OutputFile "$ProjectRoot\$TestFile"
 
