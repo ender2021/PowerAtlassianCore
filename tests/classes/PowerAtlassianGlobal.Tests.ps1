@@ -1,15 +1,15 @@
-using module ..\..\PowerJira\classes\AtlassianContext.psm1
-using module ..\..\PowerJira\classes\PowerAtlassianGlobal.psm1
+using module ..\..\PowerAtlassianCore\classes\AtlassianContext.psm1
+using module ..\..\PowerAtlassianCore\classes\PowerAtlassianGlobal.psm1
 
-Describe "PowerJiraGlobal (Class)" {
+Describe "PowerAtlassianGlobal (Class)" {
     Context "Constructors" {
         
     }
     Context "Session Methods" {
         $jiraContext = New-Object JiraContext @("1","2","3")
-        $pjg = New-Object PowerJiraGlobal
+        $pjg = New-Object PowerAtlassianGlobal
 
-        It "OpenSession sets the passed JiraContext object to the Context property" {
+        It "OpenSession sets the passed AtlassianContext object to the Context property" {
             $pjg.OpenSession($jiraContext)
             $pjg.Context | Should -Be $jiraContext
         }

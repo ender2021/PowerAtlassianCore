@@ -1,4 +1,4 @@
-using module ..\..\PowerJira\classes\HashtableUtility.psm1
+using module ..\..\PowerAtlassianCore\classes\HashtableUtility.psm1
 
 Describe "HashtableUtility (Class)" {
     Context "Find Depth method" {

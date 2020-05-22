@@ -1,4 +1,4 @@
-using module ..\..\PowerJira\classes\JiraDateTime.psm1
+using module ..\..\PowerAtlassianCore\classes\JiraDateTime.psm1
 
 Describe "JiraDateTime (Class)" {
     Context "Constructors" {
