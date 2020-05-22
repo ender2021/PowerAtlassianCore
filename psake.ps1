@@ -56,6 +56,7 @@ Task Test -Depends Init  {
     if($TestResults.FailedCount -gt 0)
     {
         Write-Error "Failed '$($TestResults.FailedCount)' tests, build failed"
+        $host.SetShouldExit(1)
     }
     "`n"
 }
