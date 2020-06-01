@@ -13,7 +13,7 @@ class AtlassianContext {
     [string]
     $HostName
 
-    [ValidateRange(0,10)]
+    [ValidateRange(1,10)]
     [int32]
     $Retries
     
