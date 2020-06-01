@@ -123,12 +123,12 @@ Describe "BodyRestMethod (Class)" {
             
             $jsonRm.Invoke($jc).Body | Should -Be $jsonBody.ToString()
         }
-        It "passes MaximumRetryCount to Invoke-RestMethod correctly" {
-            $result.MaximumRetryCount | Should -Be $retries
-        }
-        It "passes RetryIntervalSec to Invoke-RestMethod correctly" {
-            $result.RetryIntervalSec | Should -Be $delay
-        }
+        # It "passes MaximumRetryCount to Invoke-RestMethod correctly" {
+        #     $result.MaximumRetryCount | Should -Be $retries
+        # }
+        # It "passes RetryIntervalSec to Invoke-RestMethod correctly" {
+        #     $result.RetryIntervalSec | Should -Be $delay
+        # }
     }
     Context "Invoke Method (with query)" {
         $uri = "https://my-uri.com"
