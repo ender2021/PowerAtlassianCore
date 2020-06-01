@@ -10,7 +10,7 @@ Describe "FormRestMethod (Class)" {
     $simplePath = "path"
     $get = "GET"
     $defaultContentType = "application/json"
-    $formHash = @{file=Get-Item $PSScriptRoot}
+    $formHash = @{file=Get-Item "$PSScriptRoot\test.txt"}
     $xAtlasToken = @{
         "X-Atlassian-Token" = "no-check"
     }
