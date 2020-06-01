@@ -52,6 +52,23 @@ class FormRestMethod : RestMethod {
         }
     }
 
+    hidden
+    [string]
+    BodyLines([string]$Boundary) {
+        $fileName = $this.Form.file.Name
+        $fileBytes = [System.IO.File]::ReadAllBytes($this.Form.file);
+        $fileEnc = [System.Text.Encoding]::GetEncoding('ISO-8859-1').GetString($fileBytes);
+        $LF = "`r`n";
+
+        return ( 
+            "--$Boundary",
+            "Content-Disposition: form-data; name=`"file`"; filename=`"$fileName`"",
+            "Content-Type: application/octet-stream$LF",
+            $fileEnc,
+            "--$Boundary--$LF" 
+        ) -join $LF
+    }
+
     ##################
     # PUBLIC METHODS #
     ##################
@@ -61,13 +78,16 @@ class FormRestMethod : RestMethod {
         [AtlassianContext]$AtlassianContext
     ){
         $AtlassianContext = [RestMethod]::FillContext($AtlassianContext)
+        $boundary = [System.Guid]::NewGuid().ToString()
+        $bodyLines = $this.BodyLines($boundary)
         $invokeSplat = @{
             Uri = $this.Uri($AtlassianContext)
             Method = $this.HttpMethod
             Headers = $this.HeadersToSend($AtlassianContext) 
             MaximumRetryCount = $AtlassianContext.Retries
             RetryIntervalSec = $AtlassianContext.RetryDelay
-            Form = $this.Form
+            ContentType = "multipart/form-data; boundary=`"$boundary`""
+            Body = $bodyLines
         }
         return [RestMethod]::RootInvoke($invokeSplat)
     }
