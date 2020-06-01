@@ -12,7 +12,7 @@
 RootModule = 'PowerAtlassianCore.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.2'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -33,7 +33,7 @@ Copyright = '(c) Justin Mead. All rights reserved.'
 Description = 'Core utility functionality for PowerJira and PowerConfluence'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '6.1'
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
