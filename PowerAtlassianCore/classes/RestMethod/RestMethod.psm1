@@ -98,6 +98,8 @@ class RestMethod {
         $result = $null
         $maxRetries = $splat.MaximumRetryCount
         $retryDelay = $splat.RetryIntervalSec
+        $splat.Remove("MaximumRetryCount")
+        $splat.Remove("RetryIntervalSec")
         do {
             try {
                 $result = Invoke-RestMethod @splat -ErrorAction "Stop"
